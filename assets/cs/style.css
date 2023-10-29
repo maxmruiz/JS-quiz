@@ -29,8 +29,9 @@ body {
     margin-bottom: 30px;
 }
 
-.container a {
+.container button{
     margin: 8px;
+    border: none;
     background-color: #0096FF;
     padding: 18px 20px;
     text-decoration: none;
@@ -44,7 +45,7 @@ body {
     transition: transform 0.2s ease;
 }
 
-.container a:hover {
+.container button:hover {
     transform: scale(1.05);
 }
 
