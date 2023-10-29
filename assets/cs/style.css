@@ -43,3 +43,43 @@ body {
 .container a:hover {
     transform: scale(1.05);
 }
+
+.quiz-box {
+    position: absolute;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.quiz-box header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quiz-box header h1 {
+    font-size: 30px;
+}
+
+.quiz-box header .timer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ADD8E6;
+    padding: 15px 20px;
+    border-radius: 10px;
+    gap: 15px;
+    font-weight: 700;
+}
+
+.quiz-box header .timer .time-left {
+    background-color: #1f5479;
+    padding: 8px 18px;
+    border-radius: 10px;
+    color: #fff;
+}
