@@ -8,44 +8,55 @@
     <title>JavaScript Coding Quiz</title>
 </head>
 <body>
+
+    <!---Starting Page of website-->
+
     <div class="container">
         <h1>JavaScript Quiz</h1>
         <a href="/game.html" class="start-btn">Start Now</a>
         <a href="/highscores.html" class="scores" id="highscore-btn">High Scores</a>
     </div>
 
+    <!--Quiz Section of website-->
+
     <div class="quiz-box">
-        <h1>JavaScript Quiz</h1>
-        <div class="timer">Time Left: </div>
-        <div class="time-left">15</div>
+        <header>
+            <h1>JavaScript Quiz</h1>
+            <div class="timer">
+                <div class="timer-text">Time Left: </div>
+                <div class="time-left">15</div>
+            </div>
+        </header>
+        <section>
+            <div class="question">
+                <span>Inside which HTML element do we put the JavaScript?</span>
+            </div>
+            <div class="option-list">
+                <div class="option">
+                    <span>&lt;script&gt;</span>
+                    <div class="correct"><i class="bi bi-check-circle"></i></div>
+                </div>
+                <div class="option">
+                    <span>&lt;javascript&gt;</span>
+                    <div class="wrong"><i class="bi bi-x-circle"></i></div>
+                </div>
+                <div class="option">
+                    <span>&lt;scripting&gt;</span>
+                    <div class="wrong"><i class="bi bi-x-circle"></i></div>
+                </div>
+                <div class="option">
+                    <span>&lt;js&gt;</span>
+                    <div class="wrong"><i class="bi bi-x-circle"></i></div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="total-questions">
+                <span><p>1</p>Of<p>12</p></span>
+            </div>
+            <button class="next-btn">Next Question</button>
+        </footer>
     </div>
-    <div class="question">
-        <span>Inside which HTML element do we put the JavaScript?</span>
-    </div>
-    <div class="option-list">
-        <div class="option">
-            <span>&lt;script&gt;</span>
-            <div class="correct"><i class="bi bi-check-circle"></i></div>
-        </div>
-        <div class="option">
-            <span>&lt;javascript&gt;</span>
-            <div class="wrong"><i class="bi bi-x-circle"></i></div>
-        </div>
-        <div class="option">
-            <span>&lt;scripting&gt;</span>
-            <div class="wrong"><i class="bi bi-x-circle"></i></div>
-        </div>
-        <div class="option">
-            <span>&lt;js&gt;</span>
-            <div class="wrong"><i class="bi bi-x-circle"></i></div>
-        </div>
-    </div>
-    <footer>
-        <div class="total-questions">
-            <span><p>1</p>Of<p>12</p></span>
-        </div>
-        <button class="next-btn">Next Question</button>
-    </footer>
     <!--
         <span>Where is the correct place to insert a JavaScript?</span>
         <span>What is the correct syntax for referring to an external script called "xxx.js"?</span>
