@@ -68,6 +68,12 @@ let currentQuestionIndex = 0;
 let timer;
 let timeLeft = 15;
 
+var container = document.querySelector(".container");
+var quizBox = document.querySelector(".quiz-box");
+var questionElement = document.querySelector(".question span");
+var optionsElement = document.querySelector(".option-list");
+var timeLeftElement = document.querySelector(".time-left");
+
 //Adding functions
 function startQuiz() {
     document.querySelector('.container').style.display = 'none';
