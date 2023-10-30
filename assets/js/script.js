@@ -110,3 +110,10 @@ function checkAnswer(index) {
     currentQuestionIndex++;
     displayQuestion();
 }
+
+function endQuiz(){
+    clearInterval(timer);
+    document.querySelector('.quiz-box').style.display = 'none';
+    document.querySelector('.score-box').style.display = 'block';
+    document.querySelector('.score-box p').innerText = timeLeft;
+}
