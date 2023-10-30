@@ -81,14 +81,23 @@ document.querySelector(".start-btn").addEventListener("click", function() {
     container.style.display = "none";
     quizBox.style.display = "block";
     loadQuestion(currentQuestionIndex);
-    timer = setInterval(function() {
+    setTimer();
+});
+
+function setTimer(){
+    timeLeft = 15;
+    timeLeftElement.innerHTML = timeLeft;
+
+    clearInterval(timer);
+
+    timer = setInterval(function(){
         timeLeft--;
-        timeLeftElement.innerText = timeLeft;
-        if (timeLeft <= 0) {
-            endQuiz();
+        timeLeftElement.innerHTML = timeLeft;
+        if (timeLeft <= 0){
+            moveToNextQuestion();
         }
     }, 1000);
-});
+}
 
 function loadQuestion(index) {
     var question = questions[index];
@@ -117,6 +126,17 @@ function loadQuestion(index) {
 
         optionsDiv.appendChild(optionDiv);
     });
+
+    setTimer();
+}
+
+function moveToNextQuestion(){
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length){
+        loadQuestion(currentQuestionIndex);
+    } else {
+        endQuiz();
+    }
 }
 
 function endQuiz() {
