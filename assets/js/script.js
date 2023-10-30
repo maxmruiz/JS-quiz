@@ -84,3 +84,29 @@ function startQuiz() {
 
     displayQuestion();
 }
+
+function displayQuestion(){
+    if (currentQuestionIndex >= questions.length) {
+        endQuiz();
+        return;
+    }
+
+    var q = questions[currentQuestionIndex]
+    document.querySelector('.question').innerText = q.question;
+
+    var options = document.querySelector('.options span');
+    options.forEach((option, index) =>{
+        option.innerText = q.options[index];
+    });
+}
+
+function checkAnswer(index) {
+    var correct = questions[currentQuestionIndex].answer;
+
+    if (index !== correct){
+        timeLeft -= 5;
+    }
+
+    currentQuestionIndex++;
+    displayQuestion();
+}
