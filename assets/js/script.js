@@ -117,3 +117,12 @@ function endQuiz(){
     document.querySelector('.score-box').style.display = 'block';
     document.querySelector('.score-box p').innerText = timeLeft;
 }
+
+document.querySelector('.start-btn').addEventListener('click', startQuiz); //Starting the quiz once the start button is clicked
+
+var options = document.querySelectorAll('.option');
+options.forEach((option, index) =>{
+    option.addEventListener('click', function(){
+        checkAnswer(index);
+    });
+});
