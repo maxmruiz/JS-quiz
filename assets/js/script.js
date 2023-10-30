@@ -80,6 +80,9 @@ var optionsDiv = document.querySelector('.option-list');
 document.querySelector(".start-btn").addEventListener("click", function() {
     container.style.display = "none";
     quizBox.style.display = "block";
+
+    document.querySelector('.total-questions-num').textContent = questions.length;
+
     loadQuestion(currentQuestionIndex);
     setTimer();
 });
@@ -104,6 +107,8 @@ function loadQuestion(index) {
 
     questionDiv.textContent = question.question;
     optionsDiv.innerHTML = '';
+
+    document.querySelector('.current-question').textContent = currentQuestionIndex + 1;
 
     question.options.forEach((option, idx) => {
         var optionDiv = document.createElement('div');

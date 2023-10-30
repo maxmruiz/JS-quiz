@@ -136,12 +136,12 @@ body {
     justify-content: space-between;
 }
 
-.quiz-box footer .total-questions span{
+.quiz-box footer .total-questions{
     display: flex;
     flex-direction: row;
 }
 
-.quiz-box footer .total-questions span p {
+.quiz-box footer .total-questions .current-question, .total-questions-num{
     font-weight: 600;
     padding: 0 5px;
 }
