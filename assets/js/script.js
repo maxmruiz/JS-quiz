@@ -69,3 +69,18 @@ let timer;
 let timeLeft = 15;
 
 //Adding functions
+function startQuiz() {
+    document.querySelector('.container').style.display = 'none';
+    document.querySelector('.quiz-box').style.display = 'block';
+
+    timer = setInterval(function(){
+        timeLeft--;
+        document.querySelector('.timer').innerText = timeLeft;
+
+        if (timeLeft <= 0){
+            endQuiz();
+        }
+    }, 1000);
+
+    displayQuestion();
+}
