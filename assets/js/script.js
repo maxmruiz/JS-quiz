@@ -75,60 +75,16 @@ var optionsElement = document.querySelector(".option-list");
 var timeLeftElement = document.querySelector(".time-left");
 
 //Adding functions
-function startQuiz() {
-    document.querySelector('.container').style.display = 'none';
-    document.querySelector('.quiz-box').style.display = 'block';
-
-    timer = setInterval(function(){
+document.querySelector(".start-btn").addEventListener("click", function() {
+    container.style.display = "none";
+    quizBox.style.display = "block";
+    loadQuestion(currentQuestionIndex);
+    timer = setInterval(function() {
         timeLeft--;
-        document.querySelector('.timer').innerText = timeLeft;
-
-        if (timeLeft <= 0){
+        timeLeftElement.innerText = timeLeft;
+        if (timeLeft <= 0) {
             endQuiz();
         }
     }, 1000);
-
-    displayQuestion();
-}
-
-function displayQuestion(){
-    if (currentQuestionIndex >= questions.length) {
-        endQuiz();
-        return;
-    }
-
-    var q = questions[currentQuestionIndex]
-    document.querySelector('.question').innerText = q.question;
-
-    var options = document.querySelector('.options span');
-    options.forEach((option, index) =>{
-        option.innerText = q.options[index];
-    });
-}
-
-function checkAnswer(index) {
-    var correct = questions[currentQuestionIndex].answer;
-
-    if (index !== correct){
-        timeLeft -= 5;
-    }
-
-    currentQuestionIndex++;
-    displayQuestion();
-}
-
-function endQuiz(){
-    clearInterval(timer);
-    document.querySelector('.quiz-box').style.display = 'none';
-    document.querySelector('.score-box').style.display = 'block';
-    document.querySelector('.score-box p').innerText = timeLeft;
-}
-
-document.querySelector('.start-btn').addEventListener('click', startQuiz); //Starting the quiz once the start button is clicked
-
-var options = document.querySelectorAll('.option');
-options.forEach((option, index) =>{
-    option.addEventListener('click', function(){
-        checkAnswer(index);
-    });
 });
+
