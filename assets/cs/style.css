@@ -123,12 +123,10 @@ body {
     border-color: #b8daff;
 }
 
-.quiz-box section .option .correct {
-    color:  #4caf50 ;
-}
-
-.quiz-box section .option .wrong {
-    color:  #ec3d60;
+.quiz-box section .option.selected-option {
+    color: #004085;
+    background-color: #cce5ff;
+    border: 1px solid #b8daff;
 }
 
 .quiz-box footer {
@@ -156,6 +154,7 @@ body {
     font-family: var(--font);
     font-size: 15px;
     color: #fff;
+    cursor: pointer;
 }
 
 .score-box {

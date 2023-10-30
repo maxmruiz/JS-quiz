@@ -111,17 +111,19 @@ function loadQuestion(index) {
         optionDiv.textContent = option;
 
         optionDiv.addEventListener("click", function() {
+
+            document.querySelectorAll('.option').forEach(function(opt){
+                opt.classList.remove('.selected-option');
+            })
+
+            optionDiv.classList.add('selected-option');
+
             if (idx === question.correctIndex) {
+
             } else {
-                timeLeft -= 5;
+                timeLeft -= 2;
             }
 
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                loadQuestion(currentQuestionIndex);
-            } else {
-                endQuiz();
-            }
         });
 
         optionsDiv.appendChild(optionDiv);
@@ -129,6 +131,9 @@ function loadQuestion(index) {
 
     setTimer();
 }
+
+document.querySelector(".next-btn").addEventListener("click", moveToNextQuestion);
+
 
 function moveToNextQuestion(){
     currentQuestionIndex++;
