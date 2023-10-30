@@ -118,7 +118,7 @@ function loadQuestion(index) {
 
             optionDiv.classList.add('selected-option');
 
-            if (idx === question.correctIndex) {
+            if (idx === question.answer) {
 
             } else {
                 timeLeft -= 2;
