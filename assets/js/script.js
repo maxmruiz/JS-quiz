@@ -75,6 +75,9 @@ var optionsElement = document.querySelector(".option-list");
 var timeLeftElement = document.querySelector(".time-left");
 var questionDiv = document.querySelector('.question');
 var optionsDiv = document.querySelector('.option-list');
+var scoreBox = document.querySelector('.score-box');
+var finalScoreElem = scoreBox.querySelector('span p:first-of-type');
+var totalQuestionsElem = scoreBox.querySelector('span p:last-of-type');
 
 //Adding functions
 document.querySelector(".start-btn").addEventListener("click", function() {
@@ -152,4 +155,27 @@ function moveToNextQuestion(){
 function endQuiz() {
     clearInterval(timer);
     quizBox.style.display = "none";
+
+    finalScoreElem.textContent = (15 - timeLeft);
+    totalQuestionsElem.textContent = questions.length;
+
+    scoreBox.style.display = 'block';
+
 }
+
+document.querySelector('.save-score').addEventListener('click', function(){
+    var initials = prompt("Enter your initials to save your score:");
+
+    var score = 15 - timeLeft;
+
+    if (initials.trim().length === 0){
+        alert('Please enter your initials before saving your score.');
+        return;
+    }
+
+
+});
+
+document.querySelector('.highscores').addEventListener('click', function(){
+    
+})
