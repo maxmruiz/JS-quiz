@@ -73,6 +73,8 @@ var quizBox = document.querySelector(".quiz-box");
 var questionElement = document.querySelector(".question span");
 var optionsElement = document.querySelector(".option-list");
 var timeLeftElement = document.querySelector(".time-left");
+var questionDiv = document.querySelector('.question');
+var optionsDiv = document.querySelector('.option-list');
 
 //Adding functions
 document.querySelector(".start-btn").addEventListener("click", function() {
@@ -88,3 +90,36 @@ document.querySelector(".start-btn").addEventListener("click", function() {
     }, 1000);
 });
 
+function loadQuestion(index) {
+    var question = questions[index];
+
+    questionDiv.textContent = question.question;
+    optionsDiv.innerHTML = '';
+
+    question.options.forEach((option, idx) => {
+        var optionDiv = document.createElement('div');
+        optionDiv.classList.add('option');
+        optionDiv.textContent = option;
+
+        optionDiv.addEventListener("click", function() {
+            if (idx === question.correctIndex) {
+            } else {
+                timeLeft -= 5;
+            }
+
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion(currentQuestionIndex);
+            } else {
+                endQuiz();
+            }
+        });
+
+        optionsDiv.appendChild(optionDiv);
+    });
+}
+
+function endQuiz() {
+    clearInterval(timer);
+    quizBox.style.display = "none";
+}
