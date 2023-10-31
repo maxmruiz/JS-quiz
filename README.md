@@ -12,4 +12,4 @@ As mentioned previously, this website was made using JavaScript but also HTML an
 ![Screenshot of page once the quiz ends where you are shown your score with the option of looking at high scores, saving your score, or trying again.](./assets/images/SC-3.png)
 
 ## Link
-Wanna test out your JavaScript knowledge, [test it out here].
+Wanna test out your JavaScript knowledge, [test it out here](https://maxmruiz.github.io/JS-quiz/).
