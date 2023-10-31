@@ -67,6 +67,7 @@ var questions = [
 let currentQuestionIndex = 0;
 let timer;
 let timeLeft = 15;
+let userScore = 0;
 
 var container = document.querySelector(".container");
 var quizBox = document.querySelector(".quiz-box");
@@ -127,7 +128,7 @@ function loadQuestion(index) {
             optionDiv.classList.add('selected-option');
 
             if (idx === question.answer) {
-
+                userScore++;
             } else {
                 timeLeft -= 2;
             }
@@ -165,17 +166,38 @@ function endQuiz() {
 
 document.querySelector('.save-score').addEventListener('click', function(){
     var initials = prompt("Enter your initials to save your score:");
+    var score = userScore;
 
-    var score = 15 - timeLeft;
-
-    if (initials.trim().length === 0){
-        alert('Please enter your initials before saving your score.');
-        return;
-    }
-
-
+    saveScores(initials, score);
+    alert('Score saved!');
 });
 
+function saveScores(initials, score){
+    var highScores = JSON.parse(localStorage.getItem('highscores')) || [];
+
+    highScores.push({initials: initials, score: score});
+
+    highScores.sort((a, b) => b.score - a.score);
+
+    highScores = highScores.slice(0, 10);
+
+    localStorage.setItem('highscores', JSON.stringify(highScores));
+
+}
+
 document.querySelector('.highscores').addEventListener('click', function(){
-    
-})
+    var highScores = JSON.parse(localStorage.getItem('highscores')) || [];
+
+    var highscoreListDiv = document.querySelector('.highscore-list');
+    var highscoreUl = highscoreListDiv.querySelector('ul');
+
+    highscoreUl.innerHTML = '';
+
+    highScores.forEach(scoreItem => {
+        var li = document.createElement('li');
+        li.textContent = `${scoreItem.initials}: ${scoreItem.score}`;
+        highscoreUl.appendChild(li);
+    });
+
+    highscoreListDiv.style.display = 'block';
+});
