@@ -68,6 +68,7 @@ let currentQuestionIndex = 0;
 let timer;
 let timeLeft = 15;
 let userScore = 0;
+let answered = [];
 
 var container = document.querySelector(".container");
 var quizBox = document.querySelector(".quiz-box");
@@ -120,9 +121,10 @@ function loadQuestion(index) {
         optionDiv.textContent = option;
 
         optionDiv.addEventListener("click", function() {
+            if (answered.includes(currentQuestionIndex)) return;
 
             document.querySelectorAll('.option').forEach(function(opt){
-                opt.classList.remove('.selected-option');
+                opt.classList.remove('selected-option');
             })
 
             optionDiv.classList.add('selected-option');
@@ -132,6 +134,8 @@ function loadQuestion(index) {
             } else {
                 timeLeft -= 2;
             }
+
+            answered.push(currentQuestionIndex);
 
         });
 
@@ -157,7 +161,7 @@ function endQuiz() {
     clearInterval(timer);
     quizBox.style.display = "none";
 
-    finalScoreElem.textContent = (15 - timeLeft);
+    finalScoreElem.textContent = userScore;
     totalQuestionsElem.textContent = questions.length;
 
     scoreBox.style.display = 'block';
