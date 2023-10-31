@@ -201,3 +201,32 @@ body {
     font-weight: 600;
     color: #fff;
 }
+
+.highscore-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: (0,0,0,0.7);
+}
+
+
+.highscore-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.highscore-list li {
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.highscore-container li:last-child {
+    border-bottom: none;
+}
