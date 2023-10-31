@@ -70,6 +70,7 @@ let timeLeft = 15;
 let userScore = 0;
 let answered = [];
 
+// Declaring commonly used selectors
 var container = document.querySelector(".container");
 var quizBox = document.querySelector(".quiz-box");
 var questionElement = document.querySelector(".question span");
@@ -81,17 +82,19 @@ var scoreBox = document.querySelector('.score-box');
 var finalScoreElem = scoreBox.querySelector('span p:first-of-type');
 var totalQuestionsElem = scoreBox.querySelector('span p:last-of-type');
 
-//Adding functions
+//Adding function to start the test
 document.querySelector(".start-btn").addEventListener("click", function() {
     container.style.display = "none";
     quizBox.style.display = "block";
 
+    //Keeping track of which question user is on
     document.querySelector('.total-questions-num').textContent = questions.length;
 
     loadQuestion(currentQuestionIndex);
     setTimer();
 });
 
+//Function for timer of quiz, once a question is answered incorrectly, the time is decreased by 2s
 function setTimer(){
     timeLeft = 15;
     timeLeftElement.innerHTML = timeLeft;
@@ -101,12 +104,14 @@ function setTimer(){
     timer = setInterval(function(){
         timeLeft--;
         timeLeftElement.innerHTML = timeLeft;
+        //If user does not answer question in 15 seconds, they move onto the next question
         if (timeLeft <= 0){
             moveToNextQuestion();
         }
     }, 1000);
 }
 
+//Parent function of displaying each question and answer one by one
 function loadQuestion(index) {
     var question = questions[index];
 
@@ -129,10 +134,11 @@ function loadQuestion(index) {
 
             optionDiv.classList.add('selected-option');
 
+            //Checks if the answer user provided is correct answer, if yes, added to users score
             if (idx === question.answer) {
                 userScore++;
             } else {
-                timeLeft -= 2;
+                timeLeft -= 2;//If not 2 seconds is removed
             }
 
             answered.push(currentQuestionIndex);
@@ -147,16 +153,17 @@ function loadQuestion(index) {
 
 document.querySelector(".next-btn").addEventListener("click", moveToNextQuestion);
 
-
+//Checking to make sure that if there are more questions after the current one, to load it
 function moveToNextQuestion(){
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length){
         loadQuestion(currentQuestionIndex);
     } else {
-        endQuiz();
+        endQuiz(); //Otherwise end quiz if no more questions
     }
 }
 
+//Once the quiz is finished, timer clears and the score is displayed
 function endQuiz() {
     clearInterval(timer);
     quizBox.style.display = "none";
@@ -168,6 +175,7 @@ function endQuiz() {
 
 }
 
+//If the user wishes to save their score, they will be prompted to enter their intials to save on leaderboard
 document.querySelector('.save-score').addEventListener('click', function(){
     var initials = prompt("Enter your initials to save your score:");
     var score = userScore;
@@ -176,6 +184,7 @@ document.querySelector('.save-score').addEventListener('click', function(){
     alert('Score saved!');
 });
 
+//This function actually saves the users score onto local storage so it can be accessed
 function saveScores(initials, score){
     var highScores = JSON.parse(localStorage.getItem('highscores')) || [];
 
@@ -189,6 +198,7 @@ function saveScores(initials, score){
 
 }
 
+//If the user wishes to check the highscores, they click the 'highscore' button and are shown each person that has submitted their score
 document.querySelector('.highscores').addEventListener('click', function(){
     var highScores = JSON.parse(localStorage.getItem('highscores')) || [];
 
@@ -209,6 +219,7 @@ document.querySelector('.highscores').addEventListener('click', function(){
     highscoreContainerDiv.style.display = 'block'
 });
 
+//Try again button for users who wish to play quiz again
 document.querySelectorAll('.try-again').forEach(btn => {
     btn.addEventListener('click', function(){
         resetQuiz();
@@ -219,6 +230,7 @@ document.querySelectorAll('.try-again').forEach(btn => {
     });
 });
 
+//If the game is played again, variables would need to be set back to original value
 function resetQuiz(){
     currentQuestionIndex = 0;
     timeLeft = 15;
