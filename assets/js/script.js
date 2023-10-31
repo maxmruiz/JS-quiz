@@ -188,8 +188,9 @@ function saveScores(initials, score){
 document.querySelector('.highscores').addEventListener('click', function(){
     var highScores = JSON.parse(localStorage.getItem('highscores')) || [];
 
-    var highscoreListDiv = document.querySelector('.highscore-list');
-    var highscoreUl = highscoreListDiv.querySelector('ul');
+    var highscoreContainerDiv = document.querySelector('.highscore-container');
+    var scoreBoxDiv = document.querySelector('.score-box');
+    var highscoreUl = highscoreContainerDiv.querySelector('.highscore-list');
 
     highscoreUl.innerHTML = '';
 
@@ -199,5 +200,7 @@ document.querySelector('.highscores').addEventListener('click', function(){
         highscoreUl.appendChild(li);
     });
 
-    highscoreListDiv.style.display = 'block';
+    scoreBoxDiv.style.display = 'none';
+
+    highscoreContainerDiv.style.display = 'block'
 });
