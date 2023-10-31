@@ -208,3 +208,21 @@ document.querySelector('.highscores').addEventListener('click', function(){
 
     highscoreContainerDiv.style.display = 'block'
 });
+
+document.querySelectorAll('.try-again').forEach(btn => {
+    btn.addEventListener('click', function(){
+        resetQuiz();
+        scoreBox.style.display = 'none';
+        document.querySelector('.highscore-container').style.display = 'none';
+        quizBox.style.display = 'block';
+        loadQuestion(currentQuestionIndex);
+    });
+});
+
+function resetQuiz(){
+    currentQuestionIndex = 0;
+    timeLeft = 15;
+    userScore = 0;
+    answered = [];
+    clearInterval(timer);
+}
